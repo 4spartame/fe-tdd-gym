@@ -2,6 +2,11 @@
 
 프론트엔드 개발에 TDD 적용하기 수업의 실습 예제 repo입니다.
 
+카운터 예제 만들기를 통해 특성화 테스트부터 mock, TDD와 리팩토링을 경험해보고, TDD가 어떻게 생산성을 향상시키는가에 대해 알아봅니다.
+
+예제 데모
+https://4spartame.github.io/fe-tdd-gym/
+
 ## feature
 
 | as is | to be |
