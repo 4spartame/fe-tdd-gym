@@ -70,8 +70,8 @@ TDD로 새로운 기능을 작성해 봅니다.
 
   ```json
   "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@types/jest": "^24.0.18",
-    "@babel/preset-env": "^7.6.3",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
     "live-server": "^1.2.1"
@@ -80,7 +80,7 @@ TDD로 새로운 기능을 작성해 봅니다.
 
   - `jest` : 테스트를 구동하기 위한 `jest` 테스트 프레임워크 라이브러리입니다.
   - `@types/jest` : 실습에 `typescript`를 사용하지는 않지만 `@types/jest`를 설치하면 테스트 작성시에 vscode에서 자동으로 라이브러리 api의 명세를 제공하기 때문에 함께 설치합니다.
-  - `babel-jest`, `@babel/preset-env` : 아래에서 설명합니다.
+  - `babel-jest`, `@babel/plugin-transform-modules-commonjs` : 아래에서 설명합니다.
   - `live-server` : 현재 repo를 `root`로 하는 `http server`를 구동시켜주고, repo의 파일이 변경되면 자동으로 새로고침해주는 스크립트 라이브러리입니다.
 
 - `scripts`
