@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --watch --coverage --runInBand",
-    "start": "live-server --ignore=**/node_modules/**"
+    "test": "jest --watchAll --coverage --runInBand",
+    "start": "live-server --ignore=**/node_modules/**,**/coverage/**"
   },
   "type": "module",
   "repository": {
