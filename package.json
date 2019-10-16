@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --coverage --runInBand",
-    "start": "live-server --ignore=**/node_modules/**,**/coverage/**"
+    "start": "webpack-dev-server --mode=development"
   },
   "type": "module",
   "repository": {
@@ -22,8 +22,11 @@
     "@babel/plugin-transform-modules-commonjs": "^7.6.0",
     "@types/jest": "^24.0.18",
     "babel-jest": "^24.9.0",
+    "html-webpack-plugin": "^3.2.0",
     "jest": "^24.9.0",
-    "live-server": "^1.2.1"
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.9",
+    "webpack-dev-server": "^3.8.2"
   },
   "babel": {
     "plugins": [

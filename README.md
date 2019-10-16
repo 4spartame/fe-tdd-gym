@@ -87,15 +87,16 @@ TDD로 새로운 기능을 작성해 봅니다.
   ```json
   "scripts": {
     "test": "jest --watchAll --coverage --runInBand",
-    "start": "live-server --ignore=**/node_modules/**,**/coverage/**"
+    "start": "webpack-dev-server --mode=development"
   }
   ```
   - `test` : `jest`를 구동하는 스크립트입니다. `npm run test` 명령어로 실행합니다.
     - `--watchAll` 옵션은 파일이 변경되면 자동으로 테스트를 재실행하는 옵션입니다.
     - `--coverage` 옵션은 실행된 테스트에 대한 커버리지를 계산하여 `<root>/coverage` 폴더에 커버리지 report 파일을 생성하는 옵션입니다.
     - `--runInBand` 옵션은 `jest`에서 실행하는 각 테스트가 비동기로 실행되는 대신 동기적으로 실행되도록 하는 옵션입니다. 테스트 구동 환경에 따라 해당 옵션이 성능 향상에 도움이 될 수도 있고, 오히려 성능을 하락시킬 수도 있습니다. 강의 실습에는 대부분 랩탑을 사용할 것을 상정하고 해당 옵션을 설정해두었습니다.
-  - `start`: `live-server`를 구동하는 스크립트입니다. `npm start` 명령어로 실행합니다.
-    - `--ignore` 옵션은 주어진 패턴에 해당하는 파일이 변경될 때 서버가 리로드되지 않도록 설정하는 옵션입니다.
+  - `start`: `webpack-dev-server`를 구동하는 스크립트입니다. `npm start` 명령어로 실행합니다. 서버가 실행되면 소스파일이 `main.js`라는 단일 파일로 번들되어 서버에 올라가게 됩니다.
+    - `--mode=development` 옵션은 소스를 개발 모드로 빌드하기 위한 플래그입니다.
+
 - `jest`
 
   ```json
