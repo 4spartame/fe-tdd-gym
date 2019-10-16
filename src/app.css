@@ -60,7 +60,7 @@ body {
   font-size: 110pt;
   margin-top: -75px;
 }
-.counter.spin span {
+.counter span {
   height: 100%;
   position: absolute;
   right: 0;
@@ -68,29 +68,29 @@ body {
   margin: 0 auto;
   display: inline-block;
 }
-.counter.spin span.before {
+.counter span.before {
   display: none;
 }
-.counter.spin.decrease span {
+.counter.decrease span {
   transform: translate(0, -100%);
   animation: spinUp 0.5s;
 }
-.counter.spin.decrease span.before {
+.counter.decrease span.before {
   display: block;
   bottom: 0%;
 }
-.counter.spin.decrease span.after {
+.counter.decrease span.after {
   bottom: -100%;
 }
-.counter.spin.increase span {
+.counter.increase span {
   transform: translate(0, 100%);
   animation: spinDown 0.5s;
 }
-.counter.spin.increase span.before {
+.counter.increase span.before {
   display: block;
   bottom: 0%;
 }
-.counter.spin.increase span.after {
+.counter.increase span.after {
   bottom: 100%;
 }
 @keyframes spinUp {
