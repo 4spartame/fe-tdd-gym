@@ -11,11 +11,11 @@ https://4spartame.github.io/fe-tdd-gym/
 
 | as is | to be |
 | ----- | ----- |
-|       |       |
+|   ![as-is](./doc/as-is.gif)    |   ![to-be](./doc/to-be.gif)    |
 
 | and more! |
-| --------- |
-|           |
+| ----- |
+|     ![and-more](./doc/and-more.gif)      |
 
 ## step
 
@@ -74,7 +74,8 @@ TDD로 새로운 기능을 작성해 봅니다.
     "@types/jest": "^24.0.18",
     "babel-jest": "^24.9.0",
     "jest": "^24.9.0",
-    "live-server": "^1.2.1"
+    "webpack": "^4.41.2",
+    "webpack-dev-server": "^3.8.2"
   }
   ```
 
