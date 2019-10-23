@@ -24,10 +24,10 @@
 > 스펙 리스트
 >
 > - 화면에 아래의 html 요소가 추가되어야 한다.
->   - `div.counterContainer`
->     - `button.counterButton.minus`
->     - `button.counterButton.plus`
->     - `div.counter`
+>   - `div.counter`
+>     - `button.button.minus`
+>     - `button.button.plus`
+>     - `div.number`
 > - 카운터 박스에는 현재 카운터 숫자가 텍스트로 출력된다.
 > - 마이너스 버튼을 누르면 카운터가 감소된다.
 > - 플러스 버튼을 누르면 카운터가 증가한다.
@@ -55,10 +55,10 @@ TDD로 DOM 이벤트와 비동기 처리가 포함된 새로운 기능을 작성
 
 > 마크업 명세
 >
-> - `.counter`요소의 하위에 `span.before`과 `span.after`를 삽입한다.
+> - `.number`요소의 하위에 `span.before`과 `span.after`를 삽입한다.
 > - `span.before`에 이전 숫자를 삽입하고, `span.after`에 변경될 숫자를 삽입한다.
-> - 숫자가 커지는 애니메이션을 재생시키려면 `.counter`요소에 `.increase`클래스를 설정한다.
-> - 숫자가 작아지는 애니메이션을 재생시키려면 `.counter`요소에 `.decrease`클래스를 설정한다.
+> - 숫자가 커지는 애니메이션을 재생시키려면 `.number`요소에 `.increase`클래스를 설정한다.
+> - 숫자가 작아지는 애니메이션을 재생시키려면 `.number`요소에 `.decrease`클래스를 설정한다.
 
 ### and more!
 

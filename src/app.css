@@ -10,14 +10,14 @@ body {
   bottom: 0;
   text-align: center;
 }
-.counterContainer {
+.counter {
   display: inline-block;
   position: relative;
   margin: auto;
   top: 50%;
   text-align: center;
 }
-.counterButton {
+.button {
   width: 60px;
   height: 60px;
   margin-top: -30px;
@@ -29,19 +29,19 @@ body {
   background: #fff;
   border: 1px solid #ccc;
 }
-.counterButton:focus {
+.button:focus {
   outline: none;
 }
-.counterButton:active {
+.button:active {
   background: #fafafa;
 }
-.counterButton.minus {
+.button.minus {
   left: -80px;
 }
-.counterButton.plus {
+.button.plus {
   right: -80px;
 }
-.counter {
+.number {
   display: inline-block;
   position: relative;
   border: 1px solid #ddd;
@@ -54,13 +54,13 @@ body {
   border-radius: 10px;
   margin-top: -110px;
 }
-.counter.small {
+.number.small {
   width: 120px;
   height: 150px;
   font-size: 110pt;
   margin-top: -75px;
 }
-.counter span {
+.number span {
   height: 100%;
   position: absolute;
   right: 0;
@@ -68,29 +68,29 @@ body {
   margin: 0 auto;
   display: inline-block;
 }
-.counter span.before {
+.number span.before {
   display: none;
 }
-.counter.decrease span {
+.number.decrease span {
   transform: translate(0, -100%);
   animation: spinUp 0.5s;
 }
-.counter.decrease span.before {
+.number.decrease span.before {
   display: block;
   bottom: 0%;
 }
-.counter.decrease span.after {
+.number.decrease span.after {
   bottom: -100%;
 }
-.counter.increase span {
+.number.increase span {
   transform: translate(0, 100%);
   animation: spinDown 0.5s;
 }
-.counter.increase span.before {
+.number.increase span.before {
   display: block;
   bottom: 0%;
 }
-.counter.increase span.after {
+.number.increase span.after {
   bottom: 100%;
 }
 @keyframes spinUp {
