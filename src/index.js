@@ -1,3 +1,3 @@
-import app from "./app";
+import App from "./App";
 
-app.start(document.querySelector(".root"));
+App.start(document.querySelector(".root"));

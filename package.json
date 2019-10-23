@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --watchAll --coverage --runInBand",
-    "start": "webpack-dev-server --mode=development"
+    "start": "webpack-dev-server --mode=development --output='./dist/main.js' --open",
+    "build": "webpack --mode=production --output='./dist/main.js'"
   },
   "type": "module",
   "repository": {

@@ -17,7 +17,7 @@ body {
   top: 50%;
   text-align: center;
 }
-.button {
+.counter button {
   width: 60px;
   height: 60px;
   margin-top: -30px;
@@ -29,16 +29,16 @@ body {
   background: #fff;
   border: 1px solid #ccc;
 }
-.button:focus {
+.counter button:focus {
   outline: none;
 }
-.button:active {
+.counter button:active {
   background: #fafafa;
 }
-.button.minus {
+.counter button.minus {
   left: -80px;
 }
-.button.plus {
+.counter button.plus {
   right: -80px;
 }
 .number {

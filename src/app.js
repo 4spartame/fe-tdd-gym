@@ -19,9 +19,9 @@ export default {
     counterContainer.appendChild(minus);
     counterContainer.appendChild(number);
 
-    plus.classList.add("button", "plus");
+    plus.classList.add("plus");
     plus.innerHTML = "+";
-    minus.classList.add("button", "minus");
+    minus.classList.add("minus");
     minus.innerHTML = "-";
     number.innerHTML = 0;
     this.number = 0;
