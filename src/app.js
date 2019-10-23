@@ -1,3 +1,11 @@
+function increase() {
+  document.querySelector(".counter").innerHTML = ++this.number;
+}
+
+function decrease() {
+  document.querySelector(".counter").innerHTML = --this.number;
+}
+
 export default {
   start(root) {
     root.innerHTML = `<div class="counterContainer"></div>`;
@@ -12,25 +20,15 @@ export default {
     counterContainer.appendChild(counter);
 
     plus.classList.add("counterButton", "plus");
-    plus.innerText = "+";
+    plus.innerHTML = "+";
     minus.classList.add("counterButton", "minus");
-    minus.innerText = "-";
-    counter.innerText = 0;
+    minus.innerHTML = "-";
+    counter.innerHTML = 0;
     this.number = 0;
 
     counter.classList.add(["counter"]);
 
-    plus.addEventListener("click", this.increase.bind(this));
-    minus.addEventListener("click", this.decrease.bind(this));
-  },
-
-  increase() {
-    this.number = ++this.number;
-    document.querySelector(".counter").innerText = this.number;
-  },
-
-  decrease() {
-    this.number = --this.number;
-    document.querySelector(".counter").innerText = this.number;
+    plus.addEventListener("click", increase.bind(this));
+    minus.addEventListener("click", decrease.bind(this));
   }
 };
