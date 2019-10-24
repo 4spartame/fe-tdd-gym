@@ -1,7 +1,7 @@
 # FrontEnd TDD GYM
 프론트엔드 개발에 TDD 적용하기 수업의 실습 예제 repo입니다.
 
-[예제 미리보기](https://4spartame.github.io/static/fe-tdd-gym)
+[예제 미리보기](https://4spartame.github.io/fe-tdd-gym/static/)
 
 
 ## feature
