@@ -79,15 +79,17 @@ describe("Display", () => {
 
   describe("애니메이션", () => {
     let trigger;
+    let after;
     beforeEach(() => {
       // given
+      display.mount(root);
       trigger = {};
+      after = root.querySelector(".after");
       jest
-        .spyOn(HTMLElement.prototype, "addEventListener")
+        .spyOn(after, "addEventListener")
         .mockImplementation((evName, callback) => {
           trigger[evName] = callback;
         });
-      display.mount(root);
     });
 
     it("애니메이션 완료 이벤트 발생시 애니메이션 클래스를 .number에서 제거해야 함", () => {
@@ -104,7 +106,7 @@ describe("Display", () => {
     it("애니메이션 완료 이벤트 발생시 애니메이션 완료 콜백을 제거해야 함", () => {
       // given
       jest
-        .spyOn(HTMLElement.prototype, "removeEventListener")
+        .spyOn(after, "removeEventListener")
         .mockImplementation((evName, callback) => {
           if (trigger[evName] === callback) {
             trigger[evName] = "removed";
@@ -117,6 +119,21 @@ describe("Display", () => {
 
       // then
       expect(trigger["animationend"]).toBe("removed");
+    });
+
+    it("update 반복 호출시 이전 애니메이션 종료 후 다음 애니메이션 실행되어야 함", async () => {
+      // given
+      display.update(1, "increase");
+      display.update(0, "decrease");
+
+      // when
+      trigger["animationend"]();
+      await null;
+
+      // then
+      expect(root.querySelector(".before")).toContainHTML("1");
+      expect(root.querySelector(".after")).toContainHTML("0");
+      expect(root.querySelector(".number")).toHaveClass("decrease");
     });
   });
 });

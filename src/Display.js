@@ -15,20 +15,33 @@ export default class Display {
   }
 
   update(value, animationClass) {
+    if (this.animatePromise) {
+      this.animatePromise.then(() => this.update(value, animationClass));
+      return;
+    }
+
     this.before.innerHTML = this.prevValue;
     this.after.innerHTML = value;
     this.prevValue = value;
-    this.animate(animationClass);
+
+    if (animationClass) {
+      this.animatePromise = this.animate(animationClass);
+    }
   }
 
   animate(animationClass) {
-    this.el.classList.add(animationClass);
+    return new Promise(resolve => {
+      this.el.offsetHeight;
+      this.el.classList.add(animationClass);
 
-    const callback = () => {
-      this.el.classList.remove(animationClass);
-      this.el.removeEventListener("animationend", callback);
-    };
+      const callback = () => {
+        this.el.classList.remove(animationClass);
+        this.after.removeEventListener("animationend", callback);
+        this.animatePromise = null;
+        resolve();
+      };
 
-    this.el.addEventListener("animationend", callback);
+      this.after.addEventListener("animationend", callback);
+    });
   }
 }
