@@ -73,7 +73,7 @@ it.each([[1, 0], [2, 1]])(
 
     // then
     expect(app.getNumber()).toBe(expected);
-    expect(Display.prototype.update).toBeCalledWith(expected);
+    expect(Display.prototype.update).toBeCalledWith(expected, "increase");
     expect(Display.prototype.update).toBeCalledTimes(repeat);
   }
 );
@@ -92,7 +92,7 @@ it.each([[1, 9], [2, 8]])(
 
     // then
     expect(app.getNumber()).toBe(expected);
-    expect(Display.prototype.update).toBeCalledWith(expected);
+    expect(Display.prototype.update).toBeCalledWith(expected, "decrease");
     expect(Display.prototype.update).toBeCalledTimes(repeat);
   }
 );
