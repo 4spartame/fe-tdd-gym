@@ -1,4 +1,5 @@
 import { createElement } from "./Utils";
+import Display from "./Display";
 
 export default class App {
   constructor(root, defaultValue) {
@@ -18,14 +19,14 @@ export default class App {
     root.appendChild(this.counter);
     this.counter.appendChild(this.plus);
     this.counter.appendChild(this.minus);
-    this.counter.appendChild(this.display);
+    this.display.mount(this.counter);
   }
 
   _createUI() {
     this.counter = createElement("div", "counter");
     this.plus = createElement("button", "plus", "+");
     this.minus = createElement("button", "minus", "-");
-    this.display = createElement("div", "number", this.number);
+    this.display = new Display(this.number);
   }
 
   getNumber() {
@@ -36,15 +37,15 @@ export default class App {
     let next = this.number - 1;
     next = next < 0 ? 9 : next;
 
-    this.display.innerHTML = next;
     this.number = next;
+    this.display.update(this.number);
   }
 
   _increase() {
     let next = this.number + 1;
     next = next > 9 ? 0 : next;
 
-    this.display.innerHTML = next;
     this.number = next;
+    this.display.update(this.number);
   }
 }
