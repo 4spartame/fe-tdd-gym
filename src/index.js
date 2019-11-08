@@ -1,3 +1,3 @@
 import App from "./App";
 
-App.start(document.querySelector(".root"));
+const app = new App(document.querySelector(".root"), 0);
