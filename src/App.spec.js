@@ -1,11 +1,18 @@
 import App from "./App";
 import userEvent from "@testing-library/user-event";
+import Display from "./Display";
+
+jest.mock("./Display");
 
 let root;
 beforeEach(() => {
   // given
   document.body.innerHTML = `<div class="root"></div>`;
   root = document.querySelector(".root");
+});
+
+afterEach(() => {
+  jest.clearAllMocks();
 });
 
 it("초기화시 루트 엘리먼트에 UI 엘리먼트를 삽입해야 함", () => {
@@ -17,7 +24,17 @@ it("초기화시 루트 엘리먼트에 UI 엘리먼트를 삽입해야 함", ()
   expect(counter).not.toBeNull();
   expect(counter.querySelector(".plus")).toContainHTML("+");
   expect(counter.querySelector(".minus")).toContainHTML("-");
-  expect(counter.querySelector(".number")).toContainHTML("0");
+});
+
+it("초기화시 Display 인스턴스를 초기화하고 .counter요소에 삽입해야 함", () => {
+  // when
+  new App(root, 0);
+
+  // then
+  expect(Display).toBeCalledWith(0);
+  expect(Display.prototype.mount).toBeCalledWith(
+    root.querySelector(".counter")
+  );
 });
 
 it("getNumber 메서드 호출시 현재 숫자를 반환해야 함", () => {
@@ -43,6 +60,8 @@ it.each([1, 2])("플러스 버튼 %i회 클릭시 값이 증가해야 함", repe
 
   // then
   expect(app.getNumber()).toBe(repeat);
+  expect(Display.prototype.update).toBeCalledWith(repeat);
+  expect(Display.prototype.update).toBeCalledTimes(repeat);
 });
 
 it.each([1, 2])("마이너스 버튼 %i회 클릭시 값이 감소해야 함", repeat => {
@@ -57,6 +76,8 @@ it.each([1, 2])("마이너스 버튼 %i회 클릭시 값이 감소해야 함", r
 
   // then
   expect(app.getNumber()).toBe(9 - repeat);
+  expect(Display.prototype.update).toBeCalledWith(9 - repeat);
+  expect(Display.prototype.update).toBeCalledTimes(repeat);
 });
 
 it("값이 9일때 플러스 버튼 클릭시 0이 되어야 함", () => {
