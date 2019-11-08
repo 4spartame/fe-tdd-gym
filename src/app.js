@@ -38,7 +38,7 @@ export default class App {
     next = next < 0 ? 9 : next;
 
     this.number = next;
-    this.display.update(this.number);
+    this.display.update(this.number, "decrease");
   }
 
   _increase() {
@@ -46,6 +46,6 @@ export default class App {
     next = next > 9 ? 0 : next;
 
     this.number = next;
-    this.display.update(this.number);
+    this.display.update(this.number, "increase");
   }
 }

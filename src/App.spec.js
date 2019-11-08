@@ -60,7 +60,7 @@ it.each([1, 2])("플러스 버튼 %i회 클릭시 값이 증가해야 함", repe
 
   // then
   expect(app.getNumber()).toBe(repeat);
-  expect(Display.prototype.update).toBeCalledWith(repeat);
+  expect(Display.prototype.update).toBeCalledWith(repeat, "increase");
   expect(Display.prototype.update).toBeCalledTimes(repeat);
 });
 
@@ -76,7 +76,7 @@ it.each([1, 2])("마이너스 버튼 %i회 클릭시 값이 감소해야 함", r
 
   // then
   expect(app.getNumber()).toBe(9 - repeat);
-  expect(Display.prototype.update).toBeCalledWith(9 - repeat);
+  expect(Display.prototype.update).toBeCalledWith(9 - repeat, "decrease");
   expect(Display.prototype.update).toBeCalledTimes(repeat);
 });
 
