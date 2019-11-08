@@ -31,10 +31,20 @@ export default class App {
   getNumber() {
     return this.number;
   }
+
   _decrease() {
-    this.display.innerHTML = --this.number;
+    let next = this.number - 1;
+    next = next < 0 ? 9 : next;
+
+    this.display.innerHTML = next;
+    this.number = next;
   }
+
   _increase() {
-    this.display.innerHTML = ++this.number;
+    let next = this.number + 1;
+    next = next > 9 ? 0 : next;
+
+    this.display.innerHTML = next;
+    this.number = next;
   }
 }
