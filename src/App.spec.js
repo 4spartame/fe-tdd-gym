@@ -3,13 +3,14 @@ import userEvent from "@testing-library/user-event";
 
 let root;
 beforeEach(() => {
+  // given
   document.body.innerHTML = `<div class="root"></div>`;
   root = document.querySelector(".root");
 });
 
-it("화면에 카운터 UI를 삽입해야 함", () => {
+it("초기화시 루트 엘리먼트에 UI 엘리먼트를 삽입해야 함", () => {
   // when
-  App.start(root);
+  new App(root, 0);
 
   // then
   const counter = root.querySelector(".counter");
@@ -19,16 +20,26 @@ it("화면에 카운터 UI를 삽입해야 함", () => {
   expect(counter.querySelector(".number")).toContainHTML("0");
 });
 
+it("getNumber 메서드 호출시 현재 숫자를 반환해야 함", () => {
+  // given
+  const app = new App(root, 1);
+
+  // when
+  const number = app.getNumber();
+
+  // then
+  expect(number).toBe(1);
+});
+
 describe("버튼 클릭", () => {
   let plus;
   let minus;
-  let number;
+  let app;
   beforeEach(() => {
     // given
-    App.start(root);
+    app = new App(root, 0);
     plus = root.querySelector(".plus");
     minus = root.querySelector(".minus");
-    number = root.querySelector(".number");
   });
 
   it.each([1, 2])("플러스 버튼 %i회 클릭시 값이 증가해야 함", repeat => {
@@ -38,7 +49,7 @@ describe("버튼 클릭", () => {
     }
 
     // then
-    expect(number).toContainHTML(`${repeat}`);
+    expect(app.getNumber()).toBe(repeat);
   });
 
   it.each([1, 2])("마이너스 버튼 %i회 클릭시 값이 감소해야 함", repeat => {
@@ -48,6 +59,6 @@ describe("버튼 클릭", () => {
     }
 
     // then
-    expect(number).toContainHTML(`${0 - repeat}`);
+    expect(app.getNumber()).toBe(0 - repeat);
   });
 });
