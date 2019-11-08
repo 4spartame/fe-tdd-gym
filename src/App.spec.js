@@ -37,6 +37,17 @@ it("초기화시 Display 인스턴스를 초기화하고 .counter요소에 삽�
   );
 });
 
+it("초기화시 Display 인스턴스를 초기화하고 .counter요소에 삽입해야 함", () => {
+  // when
+  new App(root, 0);
+
+  // then
+  expect(Display).toBeCalledWith(0);
+  expect(Display.prototype.mount).toBeCalledWith(
+    root.querySelector(".counter")
+  );
+});
+
 it("getNumber 메서드 호출시 현재 숫자를 반환해야 함", () => {
   // given
   const app = new App(root, 1);
