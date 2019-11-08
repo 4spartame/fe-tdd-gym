@@ -24,6 +24,9 @@ export default class App {
     this.plus.addEventListener("click", () => this._increase());
     this.minus.addEventListener("click", () => this._decrease());
   }
+  getNumber() {
+    return this.number;
+  }
   _decrease() {
     this.display.innerHTML = --this.number;
   }
