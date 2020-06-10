@@ -1,11 +1,8 @@
 import { createElement } from "./Utils";
 
 export default class Display {
-  constructor(defaultValue) {
+  constructor(root, defaultValue) {
     this.el = createElement("div", "number", defaultValue);
-  }
-
-  mount(root) {
     root.appendChild(this.el);
   }
 
