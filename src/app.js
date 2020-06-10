@@ -3,9 +3,9 @@ import { createElement } from "./Utils";
 export default class App {
   constructor(root, defaultValue) {
     this.number = defaultValue;
+    this.root = root;
 
-    this._createUI();
-    this._mount(root);
+    this._createElements();
     this._bindEvent();
   }
 
@@ -13,19 +13,16 @@ export default class App {
     this.plus.addEventListener("click", () => this._increase());
     this.minus.addEventListener("click", () => this._decrease());
   }
-
-  _mount(root) {
-    root.appendChild(this.counter);
-    this.counter.appendChild(this.plus);
-    this.counter.appendChild(this.minus);
-    this.counter.appendChild(this.display);
-  }
-
-  _createUI() {
+  
+  _createElements() {
     this.counter = createElement("div", "counter");
     this.plus = createElement("button", "plus", "+");
     this.minus = createElement("button", "minus", "-");
     this.display = createElement("div", "number", this.number);
+    this.counter.appendChild(this.plus);
+    this.counter.appendChild(this.minus);
+    this.counter.appendChild(this.display);
+    this.root.appendChild(this.counter);
   }
 
   getNumber() {
