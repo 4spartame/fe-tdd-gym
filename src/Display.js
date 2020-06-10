@@ -1,47 +1,46 @@
 import { createElement } from "./Utils";
 
 export default class Display {
-  constructor(defaultValue) {
+  constructor(root, defaultValue) {
+    this.root = root;
+    this.number = defaultValue;
+    this._createElements(defaultValue);
+  }
+
+  _createElements(defaultValue) {
     this.el = createElement("div", "number");
     this.before = createElement("span", "before");
     this.after = createElement("span", "after", defaultValue);
     this.prevValue = defaultValue;
-  }
 
-  mount(root) {
     this.el.appendChild(this.before);
     this.el.appendChild(this.after);
-    root.appendChild(this.el);
+    this.root.appendChild(this.el);
   }
 
-  update(value, animationClass) {
+  update(number) {
     if (this.animatePromise) {
-      this.animatePromise.then(() => this.update(value, animationClass));
+      this.animatePromise.then(() => this.update(number));
       return;
     }
 
-    this.before.innerHTML = this.prevValue;
-    this.after.innerHTML = value;
-    this.prevValue = value;
-
-    if (animationClass) {
-      this.animatePromise = this.animate(animationClass);
-    }
+    this.before.innerHTML = this.number;
+    this.after.innerHTML = number;
+    this._animate(this.number < number);
+    this.number = number;
   }
 
-  animate(animationClass) {
-    return new Promise(resolve => {
-      this.el.offsetHeight;
-      this.el.classList.add(animationClass);
+  _animate(increase) {
+    const animationClass = increase ? "increase" : "decrease";
+    this.el.offsetHeight;
+    this.el.classList.add(animationClass);
 
-      const callback = () => {
+    this.animatePromise = new Promise(resolve => {
+      this.after.addEventListener("animationend", () => {
         this.el.classList.remove(animationClass);
-        this.after.removeEventListener("animationend", callback);
         this.animatePromise = null;
         resolve();
-      };
-
-      this.after.addEventListener("animationend", callback);
+      }, {once: true});
     });
   }
 }
